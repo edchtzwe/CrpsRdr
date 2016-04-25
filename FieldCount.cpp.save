@@ -1,0 +1,50 @@
+/**
+*Written by : Chong Tze Wei
+**/
+
+#include <boost/regex.hpp>
+
+#include "FieldCount.h"
+
+FieldCount::FieldCount(Version *pVersion)
+{
+    classInfo = pVersion->getVersion();
+    classInfo->clear();
+    classInfo->seekg(ios::beg);
+    version = pVersion;
+}
+
+void FieldCount::execute()
+{
+    string _temp;
+    
+    while(getline((*classInfo), _temp, ',')){
+     if(_temp == version->getVerName()){
+          while(getline((*classInfo), _temp, ',')){
+           boost::regex exp("/");
+     if(boost::regex_search(_temp, exp) == true){ //found class name
+        while(getline((*classInfo), _temp, ',')){
+         boost::regex exp("/");
+        if(boost::regex_search(_temp, exp) == true){ //found parent class
+            getline((*classInfo), _temp, ',');
+        fields.push_back(_temp);
+        break;
+        }
+        }
+     }
+     break;
+          }
+     }
+    }
+
+    FieldCount::print();
+}
+
+void FieldCount::print()
+{
+    cout<<endl<<"Showing total number of fields of classes under version "<<version->getVerName()<<endl;
+
+    for(int i = 0; i < fields.size(); ++i) {
+        cout<<fields[i]<<endl;
+    }
+}

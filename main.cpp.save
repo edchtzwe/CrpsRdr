@@ -1,0 +1,18 @@
+#include <iostream>
+#in
+
+#include "CommandParser.h"
+#include "Corpus.h"
+#include "Metadata.h"
+
+using namespace std;
+
+int main(int argc, char **argv)
+{
+    CommandParser *cmdParser = new CommandParser(argc, argv);
+    cmdParser->createMetric();
+
+    cmdParser->execute();
+
+    return 0;
+}

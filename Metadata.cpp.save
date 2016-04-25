@@ -1,0 +1,26 @@
+#include "Metadata.h"
+#include <cstdlib>
+
+Metadata::Metadata(string pPath)
+{
+  path = pPath;
+}
+
+void Metadata::loadMeta()
+{
+  metaFile = new ifstream();
+  metaFile->open(path.c_str());
+  if(metaFile->is_open() == false){
+      cerr<<"FILE NOT FOUND. QUIT";
+      exit(1);
+  }
+}
+
+ifstream* Metadata::getMeta() const
+{
+  return metaFile;
+}
+
+void Metadata::destroy()
+{
+  (*ifstream)

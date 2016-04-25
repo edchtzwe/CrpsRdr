@@ -1,0 +1,13 @@
+#include "SystemMetrics.h"
+
+SystemMetrics::SystemMetrics(string pQuery, Corpus pCorpus)
+{
+  currentQuery = pQuery;
+  corpus = pCorpus;
+}
+
+void SystemMetrics::execute()
+{
+  if(currentQuery == "count-versions"){
+      
+}

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="CorpusReader" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/CorpusReader" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/CorpusReader" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+			<Add directory="$(#boost)" />
+		</Compiler>
+		<Linker>
+			<Add library="..\..\..\..\..\..\..\Program Files (x86)\CodeBlocks\lib\libboost_regex-mgw48-mt-1_47.a" />
+			<Add directory="$(#boost.lib)" />
+		</Linker>
+		<Unit filename="ClassName.cpp" />
+		<Unit filename="ClassName.h" />
+		<Unit filename="ClassSize.cpp" />
+		<Unit filename="ClassSize.h" />
+		<Unit filename="CommandParser.cpp" />
+		<Unit filename="CommandParser.h" />
+		<Unit filename="Corpus.cpp" />
+		<Unit filename="Corpus.h" />
+		<Unit filename="CorpusLoader.cpp" />
+		<Unit filename="CorpusLoader.h" />
+		<Unit filename="FieldCount.cpp" />
+		<Unit filename="FieldCount.h" />
+		<Unit filename="Metadata.cpp" />
+		<Unit filename="Metadata.h" />
+		<Unit filename="ReleaseDates.cpp" />
+		<Unit filename="ReleaseDates.h" />
+		<Unit filename="State.cpp" />
+		<Unit filename="State.h" />
+		<Unit filename="SystemMetrics.cpp" />
+		<Unit filename="SystemMetrics.h" />
+		<Unit filename="Version.cpp" />
+		<Unit filename="Version.h" />
+		<Unit filename="VersionCount.cpp" />
+		<Unit filename="VersionCount.h" />
+		<Unit filename="VersionMetrics.h" />
+		<Unit filename="main.cpp" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

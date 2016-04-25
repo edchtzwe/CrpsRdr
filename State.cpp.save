@@ -1,0 +1,36 @@
+#include "State.h"
+
+State::State(string pSystem, Corpus *pCorpus)
+{
+    system = pSystem;
+    corpus = pCorpus;
+}
+
+void State::execute()
+{
+    ifstream *meta = corpus->getMeta()->getMeta();
+    meta->clear();
+    meta->seekg(0);    
+
+    string _temp;
+
+    while((*meta) >> _temp) {
+        if(_temp == system) {
+            (*meta) >> _temp;
+            states.push_back(_temp);
+        }
+    }
+
+
+
+    print();
+}
+
+void State::print()
+{
+  cout<<endl<<"Status of all versions of system "<<system<<endl;
+
+  for(int i = 0; i < states.size(); ++i){
+      cout<<states[i]<<endl;
+  }
+}

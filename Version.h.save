@@ -1,0 +1,32 @@
+/**
+*Written by : Chong Tze Wei
+**/
+
+#ifndef VERSION_H_INCLUDED
+#define VERSION_H_INCLUDED
+
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+/**
+*holds a stream to the system version file
+*requested from cmd line args
+**/
+
+class Version
+{
+    public:
+    /**constructor, creates a class object
+    *path format = <root-path>\Systems\<system>\<version>\class-info.csv
+    **/
+    Version(string pPath, string pSystem, string pVersion);
+    void destroy();
+    ifstream *getVersion();
+
+    private:
+    ifstream *version; //a stream to the version file
+    string verName; //the version number
+};
+
+#endif // VERSION_H_INCLUDED

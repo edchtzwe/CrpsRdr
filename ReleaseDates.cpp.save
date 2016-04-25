@@ -1,0 +1,50 @@
+#include "ReleaseDates.h"
+
+#include <boost/regex.hpp>
+
+ReleaseDates::ReleaseDates(string pSystem, Corpus *pCorpus)
+{
+  system = pSystem;
+  corpus = pCorpus;
+}
+
+void ReleaseDates::execute()
+{
+  ifstream *meta = corpus->getMeta()->getMeta();
+  meta->
+  meta->seekg(ios::beg);
+
+  string _temp;
+
+  /**algorithm searches the whole metadata file
+  *can be made quicker by first calling version count
+  *to get the total number of version numbers.
+  *That translates to the total number of release dates to get;
+  *but since our sample is tiny, so it's okay.
+  **/
+
+  while((*meta) >> _temp){
+    if(_temp == system){
+        while((*meta) >> _temp){
+            char *ptrn = "\\d{4}-\\d{2}-\\d{2}";
+            boost::regex exp(ptrn);
+            boost::cmatch what;
+
+            if(boost::regex_search(_temp.c_str(), what, exp) == true){
+                dates.push_back(string(what[0].first, what[0].second));
+                break;
+            }
+        }
+    }
+  }
+  print();
+}
+
+void ReleaseDates::print()
+{
+  cout<<endl<<"Release dates of all versions of "<<system<<endl;
+
+  for(int i = 0; i < dates.size(); ++i){
+      cout<<dates[i]<<endl;
+  }
+}

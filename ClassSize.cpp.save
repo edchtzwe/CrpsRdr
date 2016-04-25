@@ -1,0 +1,35 @@
+/**
+*Written by : Chong Tze Wei
+**/
+
+#include "ClassSize.h"
+
+ClassSize::ClassSize(Version *pVersion)
+{
+    classInfo = pVersion->getVersion();
+    version = pVersion;
+}
+
+void ClassSize::execute()
+{
+    string _temp;
+    while(getline((*classInfo), _temp, ',')) {
+        if(_temp == version->getVerName()) {
+            getline((*classInfo), _temp, ',');
+            getline((*classInfo), _temp, ',');
+            getline((*classInfo), _temp, ',');
+            sizes.push_back(_temp);
+        }
+    }
+
+    ClassSize::print();
+}
+
+void ClassSize::print()
+{
+    cout<<endl<<"Sizes of all classes under version "<<version->getVerName()<<endl;
+
+    for(int i = 0; i < sizes.size(); ++i) {
+
+    }
+}

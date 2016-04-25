@@ -1,0 +1,24 @@
+#include "Corpus.h"
+
+Corpus::Corpus(string pPath)
+{
+    path = pPath;
+    loadMeta();
+}
+
+void Corpus::loadMeta()
+{
+    metadata = new Metadata(path);
+    metadata->loadMeta();
+}
+
+Metadata* Corpus::getMeta()
+{
+    return metadata;
+}
+
+
+void Corpus::destroy()
+{
+    delete metadata;
+}

@@ -1,0 +1,33 @@
+#include "VersionCount.h"
+
+#include <fstream>
+
+VersionCount::VersionCount(string pSystem, Corpus* pCorpus)
+{
+  corpus = pCorpus;
+  system = pSystem;
+}
+
+void VersionCount::execute()
+{
+   ifstream *meta = corpus->getMeta()->getMeta();
+   meta->clear();
+   meta->seekg(ios::beg);
+
+   while((*meta) >> versionCount){
+      if(versionCount == system){
+          (*meta) >> versionCount;
+          (*meta) >> versionCount;
+          break;
+      }
+   }
+
+   print();
+}
+
+void VersionCount::print()
+{
+  cout<<endl<<"Number of versions for: "<<system<<" is: "<<versionCount<<endl;;
+}
+
+

@@ -1,0 +1,26 @@
+#include "CorpusLoader.h"
+#include "Metadata.h"
+
+CorpusLoader::CorpusLoader(string pPath)
+{
+    pPath += "\\metadata\\summary.csv";
+    path = pPath;
+
+    locateCorpus();
+}
+
+void CorpusLoader::locateCorpus()
+{
+    corpus = new Corpus(path);
+    corpus->loadMeta();
+}
+
+Corpus* CorpusLoader::getCorpus() const
+{
+    return corpus;
+}
+
+void CorpusLoader::destroy()
+{
+    delete corpus;
+}
